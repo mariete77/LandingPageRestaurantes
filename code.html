@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Amrit Palace - Culinary Heritage</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Noto Serif (Display/Headings) & Plus Jakarta Sans (Body) -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,300;0,400;1,300;1,400&amp;family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#d6c3b4",
+                    "on-primary-container": "#553000",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#003e57",
+                    "surface-container-highest": "#ece0d8",
+                    "outline": "#837467",
+                    "deep-charcoal": "#222222",
+                    "surface-container": "#f8ece3",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#855315",
+                    "secondary-container": "#e4e2e1",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#fcb972",
+                    "tertiary-fixed": "#c5e7ff",
+                    "tertiary-container": "#6baad0",
+                    "on-tertiary-fixed": "#001e2d",
+                    "on-primary-fixed-variant": "#683c00",
+                    "surface-container-low": "#fef1e9",
+                    "secondary-fixed": "#e4e2e1",
+                    "on-surface-variant": "#514439",
+                    "on-primary-fixed": "#2c1600",
+                    "rich-spice": "#D49653",
+                    "on-error": "#ffffff",
+                    "primary-container": "#d49653",
+                    "surface-variant": "#ece0d8",
+                    "primary-fixed": "#ffdcbd",
+                    "on-secondary-fixed-variant": "#474747",
+                    "tertiary-fixed-dim": "#8fcef6",
+                    "on-secondary-fixed": "#1b1c1c",
+                    "on-surface": "#201b16",
+                    "primary": "#855315",
+                    "inverse-on-surface": "#fbefe6",
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "surface-white": "#FFFFFF",
+                    "surface-dim": "#e3d8d0",
+                    "on-error-container": "#93000a",
+                    "background": "#fff8f4",
+                    "light-divider": "#DDDDDD",
+                    "surface-container-high": "#f2e6de",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-background": "#201b16",
+                    "secondary": "#5f5e5e",
+                    "on-tertiary-fixed-variant": "#004c6a",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-container": "#656464",
+                    "inverse-surface": "#362f2a",
+                    "tertiary": "#1c6588",
+                    "cream-base": "#D8CBB8",
+                    "primary-fixed-dim": "#fcb972",
+                    "surface-bright": "#fff8f4",
+                    "surface": "#fff8f4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "0px"
+            },
+            "spacing": {
+                    "component": "12px",
+                    "micro": "4px",
+                    "base": "4px",
+                    "section-v-lg": "64px",
+                    "section-h": "40px",
+                    "gap": "20px",
+                    "gutter": "16px",
+                    "card-p": "24px",
+                    "tight": "8px",
+                    "section-v-xl": "72px",
+                    "breathing": "32px",
+                    "hero-p": "52px"
+            },
+            "fontFamily": {
+                    "body-large": ["plusJakartaSans"],
+                    "body-regular": ["plusJakartaSans"],
+                    "display-hero": ["notoSerif"],
+                    "link": ["plusJakartaSans"],
+                    "heading-1": ["notoSerif"],
+                    "caption": ["plusJakartaSans"],
+                    "heading-2": ["notoSerif"],
+                    "heading-3": ["notoSerif"],
+                    "body-small": ["plusJakartaSans"]
+            },
+            "fontSize": {
+                    "body-large": ["16px", {"lineHeight": "24px", "letterSpacing": "0px", "fontWeight": "400"}],
+                    "body-regular": ["15px", {"lineHeight": "24px", "letterSpacing": "0px", "fontWeight": "500"}],
+                    "display-hero": ["95px", {"lineHeight": "76px", "letterSpacing": "0px", "fontWeight": "300"}],
+                    "link": ["15px", {"lineHeight": "15px", "letterSpacing": "0px", "fontWeight": "500"}],
+                    "heading-1": ["64px", {"lineHeight": "51px", "letterSpacing": "0px", "fontWeight": "300"}],
+                    "caption": ["12px", {"lineHeight": "12px", "letterSpacing": "0px", "fontWeight": "500"}],
+                    "heading-2": ["48px", {"lineHeight": "38px", "letterSpacing": "0px", "fontWeight": "300"}],
+                    "heading-3": ["32px", {"lineHeight": "39px", "letterSpacing": "0px", "fontWeight": "400"}],
+                    "body-small": ["12px", {"lineHeight": "12px", "letterSpacing": "0px", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        /* Utility classes for Material Symbols */
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-deep-charcoal antialiased">
+<!-- TopAppBar -->
+<nav class="sticky top-0 w-full z-50 flex justify-between items-center px-10 py-6 max-w-[1280px] mx-auto bg-stone-200 dark:bg-stone-950 border-b border-stone-300 dark:border-stone-800">
+<div class="text-2xl font-serif font-bold tracking-widest text-stone-900 dark:text-stone-50 uppercase">AMRIT PALACE</div>
+<ul class="hidden md:flex gap-8 items-center">
+<li><a class="font-serif text-sm tracking-[0.2em] text-orange-600 dark:text-orange-400 border-b-2 border-stone-800 dark:border-stone-100 pb-1 uppercase" href="#">HERITAGE</a></li>
+<li><a class="font-serif text-sm tracking-[0.2em] text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors duration-300 hover:text-orange-600 dark:hover:text-orange-400 uppercase" href="#">MENU</a></li>
+<li><a class="font-serif text-sm tracking-[0.2em] text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors duration-300 hover:text-orange-600 dark:hover:text-orange-400 uppercase" href="#">CRAFT</a></li>
+<li><a class="font-serif text-sm tracking-[0.2em] text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors duration-300 hover:text-orange-600 dark:hover:text-orange-400 uppercase" href="#">LOCATION</a></li>
+</ul>
+<button class="hidden md:block font-serif text-sm tracking-[0.2em] text-stone-800 dark:text-stone-100 border border-stone-800 px-6 py-3 hover:bg-stone-800 hover:text-stone-100 transition-colors uppercase rounded-none">BOOK A TABLE</button>
+<button class="md:hidden flex flex-col justify-center items-center">
+<span class="material-symbols-outlined text-stone-800 text-3xl">menu</span>
+</button>
+</nav>
+<!-- Hero Section -->
+<header class="bg-cream-base py-section-v-xl px-section-h flex flex-col items-center justify-center min-h-[921px] text-center border-b border-light-divider">
+<h1 class="font-display-hero text-display-hero text-deep-charcoal mb-component max-w-[1000px] leading-tight">Symphony of Spice &amp; Heritage</h1>
+<p class="font-body-large text-body-large text-on-surface-variant max-w-[600px] mb-breathing mt-tight">Experience authentic culinary traditions crafted with timeless elegance and modern restraint. A journey through the rich tapestry of flavors.</p>
+<div class="w-full max-w-[1200px] h-[600px] bg-surface-dim relative overflow-hidden mt-breathing">
+<img alt="Luxurious Feast" class="w-full h-full object-cover" data-alt="A highly detailed overhead shot of a luxurious Indian feast spread across an aged, dark stone table. The composition includes vibrant curries in polished brass bowls, freshly baked naan breads, and delicate garnishes of cilantro and saffron. The lighting is warm and dramatic, resembling late afternoon sun streaming through a window, casting deep, sophisticated shadows. The overall aesthetic is rich, editorial, and deeply rooted in a warm, earthy color palette of deep oranges, rich browns, and pristine whites, perfectly aligning with a high-end culinary heritage theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbQBLcQSnbiuzzLKlNln4q2073sxmu9LnoaxdcXNL8zdyz9FVwlpYoyv4zUWFVYkw7BiSMSvwEjWLQdWRJQ4B-JbS3lV6g2al56AMRG6m3MM_245l906kqQr7fOxSK_EOmD4YN-6JpbcyqWgbBQTiwp0VJkYVHcl7pY7puolfLUnX6i_sGou_UrN9-b7uS06px6Summ_znJPtBzASQEI5sMKFZ4qCzWHwVcRTco-sHdCYSkLjX1tWALsjNDHtyjkIB-8hSgHx8XbOW"/>
+</div>
+</header>
+<!-- Concept Section (Asymmetric Grid) -->
+<section class="bg-surface py-section-v-xl px-section-h">
+<div class="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-breathing items-center">
+<div class="lg:col-span-5 space-y-gap p-card-p">
+<span class="font-caption text-caption text-rich-spice uppercase tracking-widest block">Our Philosophy</span>
+<h2 class="font-heading-2 text-heading-2 text-deep-charcoal leading-tight">The Essence of Artisanal Craft</h2>
+<p class="font-body-large text-body-large text-on-surface-variant">Our culinary philosophy is rooted in minimalism and refined restraint. We source the finest, most authentic ingredients to create dishes that resonate with warmth and heritage, presented in an environment of uncompromising architectural clarity.</p>
+<button class="mt-breathing border border-rich-spice text-rich-spice bg-transparent px-8 py-4 font-link text-link uppercase tracking-widest hover:bg-rich-spice hover:text-surface-white transition-colors duration-300 rounded-none inline-block">Discover Our Story</button>
+</div>
+<div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-component h-[700px]">
+<div class="h-full">
+<img alt="Chef Plating" class="w-full h-full object-cover grayscale-[20%]" data-alt="A close-up, editorial photograph of a chef's hands carefully placing a delicate garnish on a meticulously plated dish. The lighting is moody and focused, highlighting the textures of the food and the hands. The background is a dark, out-of-focus professional kitchen, emphasizing the artisanal craft and precision. The color palette features deep charcoals, warm creams, and vibrant pops of green from the herbs, evoking a sense of high-end culinary mastery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnqahIDw2CNK8fFDetC_lmfhGOVhM-0ocF0AtLo800lvrICFSf_bYGFudHDzAW7TJ4IUyAx9nWdRWZuFvHj1w209VbBNz2W9XqwDvbt6pHJV3h7ps81pXYbRxjAQPPGr3kHCoWt3CKdNh2-GDbel2QIvdQt4aEEMWMW7of7yXSW8-v-_tWQuCOoiXHCiLYFIFcASUSa2Fn0VUgiVKQS5T95jQ3scVGGSeR4bH9zjA8ipQkzxp_KoutEs2x7sIM2s35dWY1YK5GAhQP"/>
+</div>
+<div class="grid grid-rows-2 gap-component h-full">
+<div class="h-full bg-cream-base p-card-p flex flex-col justify-center border border-light-divider">
+<span class="material-symbols-outlined text-rich-spice text-4xl mb-component">restaurant</span>
+<p class="font-heading-3 text-heading-3 text-deep-charcoal italic leading-snug">"Simplicity and fire are the ultimate sophistication."</p>
+</div>
+<div class="h-full">
+<img alt="Restaurant Interior" class="w-full h-full object-cover grayscale-[10%]" data-alt="A minimalist architectural shot of the restaurant's interior. Sharp lines, earthy clay textures, and natural stone surfaces dominate the scene. Soft, diffuse light washes over the space, creating a serene and sophisticated atmosphere. The color scheme is exclusively composed of warm whites, cream bases, and deep charcoal accents, perfectly matching the overarching brand aesthetic of refined restraint." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWsVflTH-97Vp12jVmYDVzX6mLAympDsevZvVVXaEi3tcvaIdXgEO-ULGJWafCGbYh60rCautT11UD0r2twO2jrsbJ5j_nW-XJCRc-oRkAYgWAI75dKmLHIPvx5tLmb05QIFt-ZTn5Zu-6HIYSDF2Zuw7_ymiFahexuKjqMOX68JdCn1m51eHxTiJxD232X8q_jPMpKxmhuv_itsiA33VaofgJ6QPFlyIX62dEbInpocqo97NwKXT6kLAAasTb6zLyJwS1V1JF7fnO"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Menu Preview Section -->
+<section class="bg-background py-section-v-xl px-section-h border-t border-light-divider">
+<div class="max-w-[1280px] mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-section-h gap-component">
+<h2 class="font-heading-1 text-heading-1 text-deep-charcoal">Curated Signatures</h2>
+<a class="font-link text-link text-rich-spice border-b-2 border-rich-spice pb-1 hover:text-deep-charcoal hover:border-deep-charcoal transition-colors uppercase tracking-widest inline-flex items-center gap-2" href="#">
+                    Explore Menu <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gap">
+<!-- Card 1 -->
+<article class="bg-surface-white border border-light-divider p-card-p shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:border-rich-spice transition-all duration-300 group cursor-pointer rounded-none flex flex-col">
+<div class="h-[280px] w-full mb-gap overflow-hidden relative">
+<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10"></div>
+<img alt="Smoked Lamb Chops" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A beautifully plated portion of slow-cooked lamb rogan josh served in an artisanal white ceramic bowl. The rich, vibrant red-orange hue of the curry contrasts sharply with the pristine white background and sharp shadows. A sprinkle of fresh green cilantro sits perfectly on top. The image is bathed in bright, natural light, creating a crisp, high-end editorial feel that emphasizes the texture and warmth of the dish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5NJ4XYOtAPO5xaWXRvuSiEJPsNPL2Q7OOJOVIuzrzfVESd6kmIcqYyYKN1j-jKR97j5L8lG7KvD4YdYNoNx9nZAmFfIVrMrS8Et0l4-q4SLDpgkLk0LrLOmUigIOt_YCcZuAQoFR8ZL9NIyd__POsyKN1AymlOhQrs4eUvOmt9YyRZd8-XxSvnQhXNdIFSQDpO1FomPhQCzpxjclBDcs41fJJ_q67zPg0PdDfZCbfmN2x_sdymvawZ2LX2rzT15YlJolcVsPjofoU"/>
+</div>
+<div class="flex justify-between items-start mb-tight">
+<h3 class="font-heading-3 text-heading-3 text-deep-charcoal">Smoked Lamb</h3>
+<span class="font-body-large text-body-large text-rich-spice">$42</span>
+</div>
+<div class="w-8 h-[1px] bg-light-divider mb-component group-hover:bg-rich-spice transition-colors"></div>
+<p class="font-body-regular text-body-regular text-on-surface-variant flex-grow">Marinated in rare frontier spices, slow-cooked over charcoal embers for a tender finish.</p>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface-white border border-light-divider p-card-p shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:border-rich-spice transition-all duration-300 group cursor-pointer rounded-none flex flex-col">
+<div class="h-[280px] w-full mb-gap overflow-hidden relative">
+<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10"></div>
+<img alt="Saffron Biryani" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="An elegant presentation of saffron-infused biryani served on a hammered copper plate. The long-grain basmati rice is perfectly distinct, adorned with crispy fried onions and fresh mint leaves. The setting is minimal, with a warm cream background that allows the golden hues of the dish to pop. The lighting is soft and directional, creating a sophisticated, high-end restaurant ambiance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu4AIEZaiRyuxlouiUcLl7aC1l_qONrJi110yraq9tkVmr_nClSkJST935ieSANK6WRI9-XQMfJdTEmraJOU0pbNZDm_N6UApnJVxL_XJzZQ_Iy737kgwmbFutk9bPJnl6swuRYqQBG4AUu-ViQnxIVuOKvkc78aBwkmWubeW_hWf6tIXO2CdcPuMUS-1YybviL7P2970Tz4-0t-yso96hOsh9r10vtwuUNWqL9HR9ZvcqJC_MY-_BA3Y5DsNeNXbZhHa96kvgLevD"/>
+</div>
+<div class="flex justify-between items-start mb-tight">
+<h3 class="font-heading-3 text-heading-3 text-deep-charcoal">Saffron Biryani</h3>
+<span class="font-body-large text-body-large text-rich-spice">$38</span>
+</div>
+<div class="w-8 h-[1px] bg-light-divider mb-component group-hover:bg-rich-spice transition-colors"></div>
+<p class="font-body-regular text-body-regular text-on-surface-variant flex-grow">Aromatic basmati aged for two years, layered with tender vegetables and pure saffron strands.</p>
+</article>
+<!-- Card 3 -->
+<article class="bg-surface-white border border-light-divider p-card-p shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:border-rich-spice transition-all duration-300 group cursor-pointer rounded-none flex flex-col">
+<div class="h-[280px] w-full mb-gap overflow-hidden relative">
+<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10"></div>
+<img alt="Artisanal Naan &amp; Dal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A minimalist, top-down shot of freshly baked artisanal naan bread resting on a stark white surface. The bread features beautifully charred blisters and is lightly brushed with golden ghee. Next to it sits a small, sleek black bowl containing a rich, dark dal makhani. The high-contrast, flat lay style emphasizes the geometric shapes and the artisanal quality of the food, perfectly fitting a modern, editorial design language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6p6z_MFae0EVLuNiDDRBK_r7ICdwIJFxOYV0CmZ9HF3oRG05IuwlGrvKkuN8SAFT9hORvGEnPagqXFefyNIiG1g3UMCxxYI-4rHynNATQ03GIXuv6pXzZ8pqBXu8JP3fP-0ZeKe8XFRRFbM8uFZXzbXyy6Ia_242Fmw6AeMSVAYdGfa6fWM9cEWei0WI5VbE8ClPW29gxnPJVOoar1v79F5H4QYRLQgosJpihYJuv9FAVaGQb3_091SCAN9F-ooBePmEDMsDo0kO6"/>
+</div>
+<div class="flex justify-between items-start mb-tight">
+<h3 class="font-heading-3 text-heading-3 text-deep-charcoal">Black Dal Makhan</h3>
+<span class="font-body-large text-body-large text-rich-spice">$28</span>
+</div>
+<div class="w-8 h-[1px] bg-light-divider mb-component group-hover:bg-rich-spice transition-colors"></div>
+<p class="font-body-regular text-body-regular text-on-surface-variant flex-grow">Simmered for 36 hours on a slow tandoor fire, enriched with churned butter and fenugreek.</p>
+</article>
+</div>
+</div>
+</section>
+<!-- Reservation Section -->
+<section class="bg-cream-base py-section-v-xl px-section-h flex justify-center items-center">
+<div class="w-full max-w-[800px] bg-surface-white p-hero-p shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-light-divider rounded-none">
+<div class="text-center mb-section-h">
+<span class="material-symbols-outlined text-rich-spice text-3xl mb-tight">event_seat</span>
+<h2 class="font-heading-2 text-heading-2 text-deep-charcoal mb-component">Reserve a Table</h2>
+<p class="font-body-regular text-body-regular text-on-surface-variant max-w-[400px] mx-auto">Join us for an unforgettable evening of culinary excellence. Reservations are highly recommended.</p>
+</div>
+<form class="space-y-gap">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gap">
+<div class="flex flex-col gap-micro">
+<label class="font-caption text-caption text-deep-charcoal uppercase tracking-widest">Date</label>
+<input class="bg-surface-white border border-light-divider p-4 font-body-regular text-body-regular text-deep-charcoal rounded-none focus:outline-none focus:border-rich-spice focus:ring-1 focus:ring-rich-spice transition-colors w-full appearance-none" type="date"/>
+</div>
+<div class="flex flex-col gap-micro">
+<label class="font-caption text-caption text-deep-charcoal uppercase tracking-widest">Time</label>
+<div class="relative">
+<select class="bg-surface-white border border-light-divider p-4 font-body-regular text-body-regular text-deep-charcoal rounded-none focus:outline-none focus:border-rich-spice focus:ring-1 focus:ring-rich-spice transition-colors w-full appearance-none">
+<option>18:00</option>
+<option>19:00</option>
+<option>20:00</option>
+<option>21:00</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gap">
+<div class="flex flex-col gap-micro">
+<label class="font-caption text-caption text-deep-charcoal uppercase tracking-widest">Guests</label>
+<div class="relative">
+<select class="bg-surface-white border border-light-divider p-4 font-body-regular text-body-regular text-deep-charcoal rounded-none focus:outline-none focus:border-rich-spice focus:ring-1 focus:ring-rich-spice transition-colors w-full appearance-none">
+<option>2 Guests</option>
+<option>4 Guests</option>
+<option>6 Guests</option>
+<option>Larger Party</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-micro">
+<label class="font-caption text-caption text-deep-charcoal uppercase tracking-widest">Name</label>
+<input class="bg-surface-white border border-light-divider p-4 font-body-regular text-body-regular text-deep-charcoal rounded-none focus:outline-none focus:border-rich-spice focus:ring-1 focus:ring-rich-spice transition-colors w-full placeholder:text-outline-variant" placeholder="John Doe" type="text"/>
+</div>
+</div>
+<button class="w-full bg-rich-spice text-surface-white font-link text-link uppercase tracking-widest py-5 mt-breathing hover:bg-surface-tint transition-colors duration-300 rounded-none shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)]" type="button">Confirm Reservation</button>
+</form>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-16 px-6 md:px-10 max-w-[1280px] mx-auto flex flex-col md:flex-row justify-between gap-8 items-center bg-stone-100 dark:bg-stone-900 border-t border-stone-200 dark:border-stone-800">
+<div class="text-lg font-serif italic text-orange-600">AMRIT PALACE</div>
+<div class="font-sans text-[10px] uppercase tracking-[0.15em] text-stone-900 dark:text-stone-50 text-center">
+            © 2024 AMRIT PALACE. CRAFTED WITH HERITAGE.
+        </div>
+<ul class="flex flex-wrap justify-center gap-6">
+<li><a class="font-sans text-[10px] uppercase tracking-[0.15em] text-stone-500 dark:text-stone-400 hover:text-orange-600 transition-colors hover:underline-offset-4 hover:underline" href="#">PRIVACY POLICY</a></li>
+<li><a class="font-sans text-[10px] uppercase tracking-[0.15em] text-stone-500 dark:text-stone-400 hover:text-orange-600 transition-colors hover:underline-offset-4 hover:underline" href="#">ACCESSIBILITY</a></li>
+<li><a class="font-sans text-[10px] uppercase tracking-[0.15em] text-stone-500 dark:text-stone-400 hover:text-orange-600 transition-colors hover:underline-offset-4 hover:underline" href="#">CAREERS</a></li>
+<li><a class="font-sans text-[10px] uppercase tracking-[0.15em] text-stone-500 dark:text-stone-400 hover:text-orange-600 transition-colors hover:underline-offset-4 hover:underline" href="#">PRESS</a></li>
+</ul>
+</footer>
+</body></html>
