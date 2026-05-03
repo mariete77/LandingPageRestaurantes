@@ -231,7 +231,7 @@ export default function Home() {
             </div>
             <div className="relative h-64 md:h-96">
               <Image
-                src="/plato2.avif"
+                src="/plato2.jpg"
                 alt="Plato típico de La Abadía De Calatrava"
                 fill
                 className="object-cover"
