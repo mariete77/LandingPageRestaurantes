@@ -33,7 +33,7 @@ export default function Home() {
       { name: "Atún Encebollado", price: "18,90€", description: "Atún fresco preparado con cebolla y un toque de vinagre de jerez.", image: "/Atun.webp" },
     ],
     Postres: [
-      { name: "Natillas Caseras", price: "4,50€", description: "Natillas cremosas preparadas de manera tradicional.", image: "/Natillas.jfif" },
+      { name: "Natillas Caseras", price: "4,50€", description: "Natillas cremosas preparadas de manera tradicional.", image: "/natillas.jpg" },
       { name: "Puding de Limón", price: "4,50€", description: "Puding casero con un toque fresco de limón.", image: "/pudin_de_limon.webp" },
       { name: "Fruta del Día", price: "3,50€", description: "Selección de frutas frescas de temporada.", image: "/Las_frutas_del_dia.webp" },
     ],
