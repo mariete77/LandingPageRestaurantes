@@ -21,7 +21,7 @@ export default function Home() {
       { name: "Ensalada de Tomate, Mezclum, Caballa y Cebolla Morada", price: "10,90€", description: "Fresca ensalada con productos de temporada y caballa marinada.", image: "/EnsaladaDeTomateI.avif" },
       { name: "Berenjenas Rellenas Gratinadas", price: "11,90€", description: "Berenjenas rellenas de carne y gratinadas en el horno con queso fundido.", image: "/Berenjenas.webp" },
       { name: "Pimientos de Piquillo Rellenos", price: "14,90€", description: "Delicados pimientos de piquillo rellenos de queso fresco y jamón ibérico.", image: "/plato1.webp" },
-      { name: "Entrecot a la Parrilla", price: "18,90€", description: "Corte premium de carne jugoso y tierno, cocinado a la parrilla con sal marina.", image: "/plato2.webp" },
+      { name: "Entrecot a la Parrilla", price: "18,90€", description: "Corte premium de carne jugoso y tierno, cocinado a la parrilla con sal marina.", image: "/plato2.jpg" },
       { name: "Carnes a la Brasa", price: "19,90€", description: "Surtido selecto de carnes frescas asadas lentamente a la brasa.", image: "/plato3.webp" },
     ],
     Segundos: [
