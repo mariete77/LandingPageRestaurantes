@@ -15,8 +15,8 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Amrit Palace - Culinary Heritage",
-  description: "Descubre la auténtica cocina india en un ambiente de elegancia atemporal.",
+  title: "La Abadía De Calatrava - Cocina Manchega",
+  description: "Descubre la auténtica gastronomía manchega en La Abadía De Calatrava. Cocina tradicional, ingredientes frescos y sabores que te harán sentir en casa.",
 };
 
 export default function RootLayout({
