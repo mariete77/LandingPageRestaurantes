@@ -29,7 +29,7 @@ export default function Home() {
       { name: "Codillo Asado a Baja Temperatura", price: "17,90€", description: "Codillo de cerdo asado lentamente hasta quedar tierno y jugoso.", image: "/codillo.webp" },
       { name: "Presa de Cerdo a la Plancha", price: "16,90€", description: "Presa de cerdo seleccionada, hecha a la plancha con un punto de sal marina.", image: "/PresaCerdo.webp" },
       { name: "Emperador a la Plancha", price: "19,90€", description: "Pescado fresco del día preparado a la plancha con aceite de oliva virgen.", image: "/Emperador.webp" },
-      { name: "Bacalao Rebozado con Pimientos Asados", price: "17,90€", description: "Bacalao fresco rebozado y acompañado de pimientos asados caseros.", image: "/Bacalao.webp" },
+      { name: "Bacalao Rebozado con Pimientos Asados", price: "17,90€", description: "Bacalao fresco rebozado y acompañado de pimientos asados caseros.", image: "/Bacalao.jpg" },
       { name: "Atún Encebollado", price: "18,90€", description: "Atún fresco preparado con cebolla y un toque de vinagre de jerez.", image: "/Atun.webp" },
     ],
     Postres: [
