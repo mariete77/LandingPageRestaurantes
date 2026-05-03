@@ -20,9 +20,9 @@ export default function Home() {
       { name: "Alcachofas Salteadas con Jamón", price: "13,90€", description: "Alcachofas tiernas salteadas al momento con jamón ibérico en su punto.", image: "/Alcachofas-con-jamon.avif" },
       { name: "Ensalada de Tomate, Mezclum, Caballa y Cebolla Morada", price: "10,90€", description: "Fresca ensalada con productos de temporada y caballa marinada.", image: "/EnsaladaDeTomateI.avif" },
       { name: "Berenjenas Rellenas Gratinadas", price: "11,90€", description: "Berenjenas rellenas de carne y gratinadas en el horno con queso fundido.", image: "/Berenjenas.webp" },
-      { name: "Pimientos de Piquillo Rellenos", price: "14,90€", description: "Delicados pimientos de piquillo rellenos de queso fresco y jamón ibérico.", image: "/plato1.avif" },
-      { name: "Entrecto a la Parrilla", price: "18,90€", description: "Corte premium de carne jugoso y tierno, cocinado a la parrilla con sal marina.", image: "/plato2.avif" },
-      { name: "Carnes a la Brasa", price: "19,90€", description: "Surtido selecto de carnes frescas asadas lentamente a la brasa.", image: "/plato3.avif" },
+      { name: "Pimientos de Piquillo Rellenos", price: "14,90€", description: "Delicados pimientos de piquillo rellenos de queso fresco y jamón ibérico.", image: "/plato1.webp" },
+      { name: "Entrecto a la Parrilla", price: "18,90€", description: "Corte premium de carne jugoso y tierno, cocinado a la parrilla con sal marina.", image: "/plato2.webp" },
+      { name: "Carnes a la Brasa", price: "19,90€", description: "Surtido selecto de carnes frescas asadas lentamente a la brasa.", image: "/plato3.webp" },
     ],
     Segundos: [
       { name: "Biftec de Ternera", price: "18,90€", description: "Carnes de calidad, cocinadas a la parrilla con el punto que prefieras.", image: "/Biftec.webp" },
