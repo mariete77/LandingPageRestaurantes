@@ -28,6 +28,13 @@
   font-style: italic;
 }
 
+@font-face {
+  font-family: "Bangers";
+  src: url("/fonts/Bangers-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
 @theme {
   --color-cream-base: #D8CBB8;
   --color-warm-accent: #D49653;
@@ -36,12 +43,12 @@
   --color-light-divider: #DDDDDD;
   --color-surface-white: #FFFFFF;
 
-  --font-display: "Almendra", serif;
+  --font-display: "Bangers", display;
   --font-body: "Plus Jakarta Sans", sans-serif;
 }
 
 :root {
-  --font-display: "Almendra", serif;
+  --font-display: "Bangers", display;
 }
 
 /* Smooth scrolling */
@@ -51,7 +58,7 @@ html {
 }
 
 h1, h2, h3, h4, h5, h6, .font-display {
-  font-family: "Almendra", serif;
+  font-family: "Bangers", display;
 }
 
 /* Mobile-first responsive adjustments */

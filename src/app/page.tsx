@@ -46,7 +46,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-4">
           <nav className="flex items-center justify-between">
             <div className="font-display text-xl md:text-2xl text-charcoal-dark">
-              La Abadía De Calatrava
+              Entre Chamos y Tíos
             </div>
             
             {/* Desktop Navigation */}
@@ -106,8 +106,8 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative min-h-[70vh] md:min-h-screen flex items-center justify-center overflow-hidden">
         <Image
-          src="/HeroAbadia.webp"
-          alt="La Abadía De Calatrava"
+          src="/EntreChamosYTiosHero.png"
+          alt="Entre Chamos y Tíos"
           fill
           className="absolute inset-0 object-cover"
           priority
@@ -115,11 +115,11 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 text-center px-4 md:px-6 max-w-4xl">
           <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-light text-cream-base mb-4 md:mb-6 leading-tight">
-            Cocina Manchega
+            Entre Chamos y Tíos
           </h1>
           <p className="font-body text-base md:text-lg lg:text-xl text-cream-base mb-6 md:mb-8 max-w-2xl mx-auto">
-            Descubre la auténtica gastronomía de La Mancha en un ambiente envolvente como una abadía.
-            Sabores tradicionales manchegos que te harán sentir en casa.
+            Una fusión de sabores venezolanos y españoles en el corazón de Ocaña.
+            Desde un desayuno completo hasta unas cervezas al final del día, el punto de encuentro entre chamos y tíos.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -204,15 +204,14 @@ export default function Home() {
                 Nuestra Historia
               </h2>
               <p className="font-body text-sm md:text-base text-cream-base/80 mb-4 md:mb-6">
-                La Abadía De Calatrava nace con la misión de ofrecer la más auténtica gastronomía manchega
-                en un ambiente acogedor que te transporta a las tradiciones culinarias de La Mancha.
-                Nuestro equipo de chefs apasionados prepara cada plato con ingredientes frescos y seleccionados,
-                respetando las recetas que han sido transmitidas a través de las generaciones.
+                Entre Chamos y Tíos nace como un punto de encuentro entre dos culturas: la venezolana y la española.
+                En nuestro local de la Calle Pilarejo, 8 de Ocaña, ofrecemos una carta que satisface tanto a los
+                nostálgicos de los sabores caribeños como a los paladares acostumbrados a la gastronomía local.
               </p>
               <p className="font-body text-sm md:text-base text-cream-base/80 mb-6 md:mb-8">
-                Desde nuestro famoso menú del día a 19,90€ hasta nuestros segundos de carne y pescado a
-                la plancha, cada preparación refleja el compromiso con la excelencia. Nuestro servicio
-                atento y cordial complementa una experiencia culinaria que tus clientes recordarán con cariño.
+                Desde desayunos completos hasta cenas con cervezas bien frías, cada preparación refleja el
+                compromiso con la calidad y la fusión de dos tradiciones culinarias. Nuestro servicio atento
+                y cordial complementa una experiencia que te hará sentir como en casa, seas chamo o tío.
               </p>
               <div className="flex flex-wrap justify-center md:justify-start gap-6 md:gap-8">
                 <div className="text-center">
@@ -224,15 +223,15 @@ export default function Home() {
                   <div className="font-body text-xs md:text-sm text-cream-base/60">Platos Únicos</div>
                 </div>
                 <div className="text-center">
-                  <div className="font-display text-2xl md:text-3xl text-warm-accent mb-2">⭐⭐⭐⭐⭐</div>
-                  <div className="font-body text-xs md:text-sm text-cream-base/60">Recomendado</div>
+                  <div className="font-display text-2xl md:text-3xl text-warm-accent mb-2">4.3 ★</div>
+                  <div className="font-body text-xs md:text-sm text-cream-base/60">218 Reseñas</div>
                 </div>
               </div>
             </div>
             <div className="relative h-64 md:h-96">
               <Image
                 src="/plato2.jpg"
-                alt="Plato típico de La Abadía De Calatrava"
+                alt="Plato típico de Entre Chamos y Tíos"
                 fill
                 className="object-cover"
               />
@@ -355,7 +354,7 @@ export default function Home() {
                 loading="lazy"
                 allowFullScreen={true}
                 referrerPolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.8381263149006!2d-3.9330!3d39.6353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4229f5e5e5e5e5d%3A0x5e5e5e5e5e5e5e5e!2sC.%20de%20Calatrava%2C%2039%2C%2013003%20Ciudad%20Real!5e0!3m2!1ses!2ses!4v1714732800000"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3052.766323456789!2d-3.5000!3d39.9500!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4229f5e5e5e5e5d%3A0xabcdef1234567890!2sC.%20Pilarejo%2C%208%2C%2045300%20Oca%C3%B1a%2C%20Toledo!5e0!3m2!1ses!2ses!4v1700000000000"
               ></iframe>
             </div>
 
@@ -367,11 +366,11 @@ export default function Home() {
                   <div>
                     <h3 className="font-display text-lg md:text-xl text-cream-base mb-2">Dirección</h3>
                     <p className="font-body text-sm md:text-base text-cream-base/80 mb-3">
-                      C. de Calatrava, 39<br />
-                      13003 Ciudad Real, España
+                      C. Pilarejo, 8<br />
+                      45300 Ocaña, Toledo, España
                     </p>
                     <a
-                      href="https://www.google.com/maps/dir/?api=1&destination=C.%20de%20Calatrava%2C%2039%2C%2013003%20Ciudad%20Real%2C%20Espa%C3%B1a"
+                      href="https://www.google.com/maps/dir/?api=1&destination=C.%20Pilarejo%2C%208%2C%2045300%20Oca%C3%B1a%2C%20Toledo%2C%20Espa%C3%B1a"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center bg-warm-accent text-charcoal-dark font-body text-sm font-medium px-6 py-2 hover:bg-charcoal-dark hover:text-cream-base transition-colors min-h-[44px]"
@@ -388,8 +387,8 @@ export default function Home() {
                   <div>
                     <h3 className="font-display text-lg md:text-xl text-cream-base mb-2">Teléfono</h3>
                     <p className="font-body text-sm md:text-base text-cream-base/80 mb-3">
-                      <a href="tel:+34683544244" className="hover:text-warm-accent transition-colors">
-                        +34 683 54 42 44
+                      <a href="tel:+34643618941" className="hover:text-warm-accent transition-colors">
+                        +34 643 61 89 41
                       </a>
                       <br />
                       Abierto hasta las 22:59
@@ -420,7 +419,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="font-display text-lg md:text-xl text-charcoal-dark mb-4 md:mb-0">
-              La Abadía De Calatrava
+              Entre Chamos y Tíos
             </div>
             <div className="flex space-x-4 md:space-x-6">
               <a href="#" className="font-body text-xs md:text-sm text-charcoal-dark hover:text-warm-accent transition-colors">
@@ -436,7 +435,7 @@ export default function Home() {
           </div>
           <div className="mt-6 md:mt-8 pt-6 md:pt-8 border-t border-light-divider text-center">
             <p className="font-body text-xs text-charcoal-dark/60">
-              © 2026 La Abadía De Calatrava. Todos los derechos reservados. Cocina Manchega Tradicional en Ciudad Real.
+              © 2026 Entre Chamos y Tíos. Todos los derechos reservados. Fusión Venezolana-Española en Ocaña.
             </p>
           </div>
         </div>

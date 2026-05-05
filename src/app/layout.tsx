@@ -15,8 +15,8 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "La Abadía De Calatrava - Cocina Manchega",
-  description: "Descubre la auténtica gastronomía manchega en La Abadía De Calatrava. Cocina tradicional, ingredientes frescos y sabores que te harán sentir en casa.",
+  title: "Entre Chamos y Tíos - Fusión Venezolana-Española",
+  description: "Descubre la fusión de sabores venezolanos y españoles en Entre Chamos y Tíos. El punto de encuentro entre dos culturas en Ocaña, Toledo.",
 };
 
 export default function RootLayout({
