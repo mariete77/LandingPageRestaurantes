@@ -1,34 +1,28 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useState } from 'react';
 
-export function useInView(options?: { threshold?: number | number[] }) {
-  const ref = useRef<HTMLDivElement>(null);
+export function useInView() {
   const [isInView, setIsInView] = useState(false);
+  const [hasTriggered, setHasTriggered] = useState(false);
 
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.15,
-      rootMargin: '0px 0px -50px 0px',
-      ...options,
-    };
+  const ref = useCallback(
+    (node: HTMLDivElement | null) => {
+      if (!node || hasTriggered) return;
 
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIsInView(true);
-      }
-    }, observerOptions);
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setHasTriggered(true);
+            setIsInView(true);
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.15, rootMargin: '0px 0px -50px 0px' }
+      );
 
-    const currentRef = ref.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
+      observer.observe(node);
+    },
+    [hasTriggered]
+  );
 
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-      observer.disconnect();
-    };
-  }, [options]);
-
-  return { ref, isInView };
+  return { ref, isInView } as const;
 }
