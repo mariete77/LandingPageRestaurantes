@@ -18,9 +18,9 @@ export default function Home() {
 
   const menuItems: Record<string, { name: string; price: string; description: string; image: string }[]> = {
     Entrantes: [
-      { name: "Tabla de Ibéricos", price: "18,90€", description: "Selección de jamón, lomo y chorizo ibérico de bellota con pan de cristal.", image: "/plato1.webp" },
+      { name: "Pimientos Rellenos", price: "18,90€", description: "Pimientos rellenos con queso y jamón ibérico.", image: "/plato1.webp" },
       { name: "Ensalada de Tomate", price: "9,90€", description: "Tomates de la huerta laminados con aceite de oliva virgen extra, sal marina y orégano fresco.", image: "/EnsaladaDeTomateI.avif" },
-      { name: "Croquetas Caseras", price: "10,90€", description: "Croquetas cremosas de jamón ibérico y de setas, rebozadas y fritas al momento.", image: "/plato3.webp" },
+      { name: "Carnes a la Brasa", price: "10,90€", description: "Carnes de la tierra a la brasa, jugosas y tiernas.", image: "/plato3.webp" },
       { name: "Berenjenas Fritas con Miel", price: "9,90€", description: "Láminas de berenjena rebozadas y fritas hasta quedar crujientes, acompañadas de miel de caña.", image: "/Berenjenas.webp" },
       { name: "Alcachofas con Jamón", price: "12,90€", description: "Corazones de alcachofa de la tierra salteados con jamón ibérico, ajo y un toque de limón.", image: "/Alcachofas-con-jamon.avif" },
       { name: "Emperador a la Plancha", price: "14,90€", description: "Filete de emperador fresco a la plancha con sofrito de tomate casero y pimientos asados.", image: "/Emperador.webp" },
