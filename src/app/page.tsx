@@ -41,7 +41,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-cream-base">
+    <div className="min-h-screen bg-cream-base overflow-x-hidden">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-cream-base/95 backdrop-blur-sm shadow-sm">
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-4">
