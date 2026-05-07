@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Entre Chamos y Tíos - Fusión Venezolana-Española</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --yellow: #FFEB3B;
+            --pink: #FF4081;
+            --blue: #2196F3;
+            --green: #4CAF50;
+            --white: #FFFFFF;
+            --black: #000000;
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
+        }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Archivo Black', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* HERO - Big bold type */
+        .hero {
+            min-height: 100vh;
+            min-height: 100dvh;
+            background: var(--yellow);
+            padding: 1.5rem;
+            padding-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--black);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            transform: rotate(-2deg);
+            opacity: 0;
+            animation: popIn 0.5s ease 0.2s forwards;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 15vw, 6rem);
+            line-height: 0.95;
+            letter-spacing: -2px;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: slideUp 0.6s ease 0.4s forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 0.9rem;
+            max-width: 280px;
+            opacity: 0;
+            animation: fadeIn 0.5s ease 0.6s forwards;
+        }
+
+        .hero-image-container {
+            position: absolute;
+            right: -20px;
+            bottom: 0;
+            width: 55%;
+            height: 55%;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeIn 0.8s ease 0.5s forwards;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px 0 0 0;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: var(--black);
+            color: var(--white);
+            padding: 1rem 2rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            margin-top: 2rem;
+            border: 4px solid var(--black);
+            box-shadow: 6px 6px 0 var(--black);
+            transition: all 0.2s ease;
+            opacity: 0;
+            animation: slideUp 0.5s ease 0.8s forwards;
+        }
+
+        .hero-cta:active {
+            transform: translate(3px, 3px);
+            box-shadow: 3px 3px 0 var(--black);
+        }
+
+        /* SECTIONS */
+        .section {
+            padding: 3rem 1.5rem;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: var(--black);
+            color: var(--white);
+            padding: 0.25rem 0.75rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 10vw, 3.5rem);
+            line-height: 1;
+        }
+
+        /* MENU - Bold cards */
+        .menu-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .menu-card {
+            background: var(--white);
+            border: 4px solid var(--black);
+            border-radius: 0;
+            padding: 1rem;
+            display: grid;
+            grid-template-columns: 100px 1fr auto;
+            gap: 1rem;
+            align-items: center;
+            box-shadow: 5px 5px 0 var(--black);
+            transition: all 0.2s ease;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .menu-card.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .menu-card:active {
+            transform: translate(3px, 3px);
+            box-shadow: 2px 2px 0 var(--black);
+        }
+
+        .menu-card:nth-child(odd) {
+            background: #FFF9C4;
+        }
+
+        .menu-card:nth-child(even) {
+            background: #FCE4EC;
+        }
+
+        .menu-thumb {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border: 3px solid var(--black);
+        }
+
+        .menu-name {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            line-height: 1.2;
+            margin-bottom: 0.25rem;
+        }
+
+        .menu-desc {
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+
+        .menu-price {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.1rem;
+            background: var(--black);
+            color: var(--white);
+            padding: 0.5rem 0.75rem;
+            white-space: nowrap;
+        }
+
+        /* ABOUT */
+        .about-section {
+            background: var(--pink);
+            color: var(--black);
+        }
+
+        .about-section .section-tag {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .about-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .about-card {
+            background: var(--white);
+            border: 4px solid var(--black);
+            padding: 1.5rem;
+            box-shadow: 6px 6px 0 var(--black);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .about-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-card p {
+            font-size: 0.85rem;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            background: var(--yellow);
+            border: 4px solid var(--black);
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 4px 4px 0 var(--black);
+        }
+
+        .stat-number {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.5rem;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+        }
+
+        /* CONTACT */
+        .contact-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-card {
+            background: var(--white);
+            border: 4px solid var(--black);
+            padding: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 5px 5px 0 var(--black);
+            transition: all 0.2s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .contact-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .contact-card:active {
+            transform: translate(3px, 3px);
+            box-shadow: 2px 2px 0 var(--black);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--blue);
+            border: 3px solid var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-card:nth-child(2) .contact-icon {
+            background: var(--green);
+        }
+
+        .contact-card:nth-child(3) .contact-icon {
+            background: var(--pink);
+        }
+
+        .contact-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            opacity: 0.6;
+        }
+
+        .contact-value {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .contact-value a {
+            color: var(--black);
+            text-decoration: none;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 2rem 1.5rem;
+            padding-bottom: calc(5rem + var(--safe-bottom));
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-text {
+            font-size: 0.75rem;
+            opacity: 0.6;
+        }
+
+        /* BOTTOM NAV */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--black);
+            padding: 0.5rem 1rem;
+            padding-bottom: calc(0.5rem + var(--safe-bottom));
+            z-index: 100;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .nav-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem;
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            border-radius: 0;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link.active {
+            color: var(--yellow);
+        }
+
+        .nav-link:active {
+            transform: scale(0.9);
+        }
+
+        .nav-icon {
+            font-size: 1.25rem;
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.8) rotate(-2deg); }
+            50% { transform: scale(1.05) rotate(-2deg); }
+            100% { opacity: 1; transform: scale(1) rotate(-2deg); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        @media (min-width: 768px) {
+            body { padding-bottom: 0; }
+            .bottom-nav { display: none; }
+            .menu-card { grid-template-columns: 120px 1fr auto; }
+            .menu-thumb { width: 120px; height: 120px; }
+            footer { padding-bottom: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-badge">🔥 Fusion Venezuelan · Español</div>
+        
+        <h1 class="hero-title">
+            Entre<br>Chamos<br>y Tíos
+        </h1>
+        
+        <p class="hero-subtitle">
+            Sabores que cruzan el charco. Ocaña, Toledo.
+        </p>
+
+        <a href="#menu" class="hero-cta">
+            Ver Carta →
+        </a>
+
+        <div class="hero-image-container">
+            <img src="/EntreChamosYTiosHero.png" alt="" class="hero-image">
+        </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="section" id="menu">
+        <div class="section-header">
+            <span class="section-tag">Carta</span>
+            <h2 class="section-title">Nuestros<br>Platos</h2>
+        </div>
+
+        <div class="menu-list">
+            <div class="menu-card">
+                <img src="/Alcachofas-con-jamon.avif" alt="" class="menu-thumb" loading="lazy">
+                <div>
+                    <h3 class="menu-name">Alcachofas c/ Jamón</h3>
+                    <p class="menu-desc">Alcachofas tiernas + jamón ibérico</p>
+                </div>
+                <span class="menu-price">13,90€</span>
+            </div>
+
+            <div class="menu-card">
+                <img src="/Biftec.webp" alt="" class="menu-thumb" loading="lazy">
+                <div>
+                    <h3 class="menu-name">Biftec Ternera</h3>
+                    <p class="menu-desc">A la parrilla, punto selectable</p>
+                </div>
+                <span class="menu-price">18,90€</span>
+            </div>
+
+            <div class="menu-card">
+                <img src="/Emperador.webp" alt="" class="menu-thumb" loading="lazy">
+                <div>
+                    <h3 class="menu-name">Emperador Plancha</h3>
+                    <p class="menu-desc">Pescado fresco del día</p>
+                </div>
+                <span class="menu-price">19,90€</span>
+            </div>
+
+            <div class="menu-card">
+                <img src="/natillas.jpg" alt="" class="menu-thumb" loading="lazy">
+                <div>
+                    <h3 class="menu-name">Natillas Caseras</h3>
+                    <p class="menu-desc">Receta de la abuela</p>
+                </div>
+                <span class="menu-price">4,50€</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about-section" id="about">
+        <div class="section-header">
+            <span class="section-tag">Historia</span>
+            <h2 class="section-title">Dos Mundos,<br>Una Mesa</h2>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>El Lugar</h3>
+                <p>Calle Pilarejo, 8 de Ocaña. Un punto de encuentro donde venezolanos y españoles comparten más que comida.</p>
+            </div>
+
+            <div class="about-card">
+                <h3>La Cocina</h3>
+                <p>Desde desayunos venezolanos hasta carnes a la brasa. Cada plato hecho con pasión y productos frescos.</p>
+            </div>
+        </div>
+
+        <div class="stats-row">
+            <div class="stat-box">
+                <span class="stat-number">+500</span>
+                <span class="stat-label">Semanal</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">15+</span>
+                <span class="stat-label">Platos</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">4.3★</span>
+                <span class="stat-label">Google</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+        <div class="section-header">
+            <span class="section-tag">Contacto</span>
+            <h2 class="section-title">Ven A<br>Visistarnos</h2>
+        </div>
+
+        <div class="contact-stack">
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <div>
+                    <div class="contact-label">Dirección</div>
+                    <div class="contact-value">C. Pilarejo, 8 · Ocaña</div>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <div>
+                    <div class="contact-label">Teléfono</div>
+                    <div class="contact-value"><a href="tel:+34643618941">+34 643 61 89 41</a></div>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">🕐</div>
+                <div>
+                    <div class="contact-label">Horario</div>
+                    <div class="contact-value">Hasta 22:59</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">Entre Chamos y Tíos</div>
+        <p class="footer-text">© 2026 · Ocaña, Toledo</p>
+    </footer>
+
+    <!-- BOTTOM NAV -->
+    <nav class="bottom-nav">
+        <div class="nav-links">
+            <a href="#menu" class="nav-link active">
+                <span class="nav-icon">🍽️</span>
+                <span>Carta</span>
+            </a>
+            <a href="#about" class="nav-link">
+                <span class="nav-icon">💬</span>
+                <span>Historia</span>
+            </a>
+            <a href="#contact" class="nav-link">
+                <span class="nav-icon">📞</span>
+                <span>Contacto</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.menu-card, .about-card, .contact-card').forEach(el => observer.observe(el));
+
+        // Bottom nav
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                if (pageYOffset >= section.offsetTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
