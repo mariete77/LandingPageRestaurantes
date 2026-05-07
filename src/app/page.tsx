@@ -23,10 +23,10 @@ export default function Home() {
       { name: "Carnes a la Brasa", price: "10,90€", description: "Carnes de la tierra a la brasa, jugosas y tiernas.", image: "/plato3.webp" },
       { name: "Berenjenas Fritas con Miel", price: "9,90€", description: "Láminas de berenjena rebozadas y fritas hasta quedar crujientes, acompañadas de miel de caña.", image: "/Berenjenas.webp" },
       { name: "Alcachofas con Jamón", price: "12,90€", description: "Corazones de alcachofa de la tierra salteados con jamón ibérico, ajo y un toque de limón.", image: "/Alcachofas-con-jamon.avif" },
-      { name: "Emperador a la Plancha", price: "14,90€", description: "Filete de emperador fresco a la plancha con sofrito de tomate casero y pimientos asados.", image: "/Emperador.webp" },
+      { name: "Emperador a la Plancha", price: "14,90€", description: "Filete de emperador fresco a la plancha con sofrito de tomate casero y pimientos asados.", image: "/Emperador.jpg" },
     ],
     "De la Tierra": [
-      { name: "Bistec a la Brasa", price: "18,90€", description: "Bistec de ternera a la brasa con patatas panaderas, pimientos asados y salsa de la casa.", image: "/Biftec.webp" },
+      { name: "Bistec a la Brasa", price: "18,90€", description: "Bistec de ternera a la brasa con patatas panaderas, pimientos asados y salsa de la casa.", image: "/Biftec.jpg" },
       { name: "Presa de Cerdo Ibérico", price: "16,90€", description: "Presa de cerdo ibérico a la brasa, jugosa y tierna, acompañada de verduras de temporada.", image: "/PresaCerdo.webp" },
       { name: "Codillo Asado", price: "17,90€", description: "Codillo de cerdo asado lentamente, crujiente por fuera y jugoso por dentro, con puré de patata casero.", image: "/codillo.webp" },
       { name: "Atún Rojo a la Parrilla", price: "19,90€", description: "Rodaja de atún rojo a la parrilla, sellada por fuera y jugosa por dentro, sobre cama de verduras salteadas.", image: "/Atun.webp" },
