@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entre Chamos y Tíos - Fusión Venezolana-Española</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-darker: #050505;
+            --gold: #c9a96e;
+            --gold-light: #e8d5b7;
+            --gold-dark: #8b7355;
+            --text-light: #f5f0e8;
+            --text-muted: #a8a090;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(201, 169, 110, 0.15);
+            --card-hover: rgba(201, 169, 110, 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .navbar.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('/EntreChamosYTiosHero.png');
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.1);
+            animation: parallax 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes parallax {
+            0% { transform: scale(1.1) translateY(0); }
+            100% { transform: scale(1.15) translateY(-20px); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.85) 0%, rgba(10, 10, 10, 0.7) 50%, rgba(10, 10, 10, 0.85) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+            max-width: 900px;
+        }
+
+        .hero-subtitle {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        .hero-title span {
+            display: inline-block;
+        }
+
+        .hero-desc {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.7s forwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.9s forwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--bg-dark);
+            box-shadow: 0 4px 20px rgba(201, 169, 110, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 30px rgba(201, 169, 110, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-light);
+            border: 1px solid var(--glass-border);
+        }
+
+        .btn-outline:hover {
+            background: rgba(201, 169, 110, 0.1);
+            border-color: var(--gold);
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 400;
+            color: var(--text-light);
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 1.5rem auto;
+        }
+
+        /* Menu */
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .menu-tab {
+            padding: 0.75rem 1.75rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .menu-tab:hover {
+            background: var(--card-hover);
+            color: var(--text-light);
+        }
+
+        .menu-tab.active {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--bg-dark);
+            border-color: transparent;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .menu-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .menu-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(201, 169, 110, 0.1);
+        }
+
+        .menu-image {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .menu-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .menu-card:hover .menu-image img {
+            transform: scale(1.1);
+        }
+
+        .menu-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(10, 10, 10, 0.8) 100%);
+        }
+
+        .menu-content {
+            padding: 1.5rem;
+        }
+
+        .menu-name {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .menu-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .menu-price {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        /* About */
+        .about-section {
+            background: var(--bg-darker);
+            position: relative;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .about-image {
+            position: relative;
+            height: 500px;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Contact */
+        .contact-section {
+            background: var(--bg-darker);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-details h4 {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .contact-details a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: var(--gold-light);
+        }
+
+        .map-container {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            height: 400px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: invert(90%) hue-rotate(180deg);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            border-top: 1px solid var(--glass-border);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-copyright {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            margin: 1rem 0;
+            text-align: center;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .mobile-menu.active a {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-image {
+                height: 350px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .map-container {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero-title {
+                font-size: clamp(2rem, 12vw, 3.5rem);
+            }
+
+            .hero-desc {
+                font-size: 0.9rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Entre Chamos y Tíos</a>
+            <div class="nav-links">
+                <a href="#menu">Menú</a>
+                <a href="#about">Nosotros</a>
+                <a href="#contact">Contacto</a>
+            </div>
+            <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-menu" onclick="toggleMenu()">×</button>
+        <a href="#menu" onclick="toggleMenu()">Menú</a>
+        <a href="#about" onclick="toggleMenu()">Nosotros</a>
+        <a href="#contact" onclick="toggleMenu()">Contacto</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-subtitle">Fusión Venezolana-Española</p>
+            <h1 class="hero-title">Entre Chamos y Tíos</h1>
+            <p class="hero-desc">Una fusión de sabores venezolanos y españoles en el corazón de Ocaña. Desde un desayuno completo hasta unas cervezas al final del día, el punto de encuentro entre chamos y tíos.</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn btn-primary">Ver Menú</a>
+                <a href="#contact" class="btn btn-outline">Contacto</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu -->
+    <section class="section" id="menu">
+        <div class="section-header">
+            <p class="section-label">Nuestro Menú</p>
+            <h2 class="section-title">Sabores que Conectan</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="menu-tabs">
+            <button class="menu-tab active" data-category="primeros">Primeros</button>
+            <button class="menu-tab" data-category="segundos">Segundos</button>
+            <button class="menu-tab" data-category="postres">Postres</button>
+        </div>
+
+        <div class="menu-grid" id="menuGrid"></div>
+    </section>
+
+    <!-- About -->
+    <section class="section about-section" id="about">
+        <div class="about-content">
+            <div class="about-text fade-in">
+                <p class="section-label">Nuestra Historia</p>
+                <h2 class="section-title" style="margin-bottom: 1.5rem;">Entre Dos Culturas</h2>
+                <p>Entre Chamos y Tíos nace como un punto de encuentro entre dos culturas: la venezolana y la española. En nuestro local de la Calle Pilarejo, 8 de Ocaña, ofrecemos una carta que satisface tanto a los nostálgicos de los sabores caribeños como a los paladares acostumbrados a la gastronomía local.</p>
+                <p>Desde desayunos completos hasta cenas con cervezas bien frías, cada preparación refleja el compromiso con la calidad y la fusión de dos tradiciones culinarias. Nuestro servicio atento y cordial complementa una experiencia que te hará sentir como en casa, seas chamo o tío.</p>
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-number" data-count="500">+0</div>
+                        <div class="stat-label">Comensales Semanales</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number" data-count="15">0</div>
+                        <div class="stat-label">Platos Únicos</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">4.3★</div>
+                        <div class="stat-label">218 Reseñas</div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image fade-in">
+                <img src="/plato2.jpg" alt="Plato típico de Entre Chamos y Tíos">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact-section" id="contact">
+        <div class="section-header">
+            <p class="section-label">Contacto</p>
+            <h2 class="section-title">Encuéntranos</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-info fade-in">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <h4>Dirección</h4>
+                        <p>C. Pilarejo, 8<br>45300 Ocaña, Toledo, España</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-details">
+                        <h4>Teléfono</h4>
+                        <p><a href="tel:+34643618941">+34 643 61 89 41</a><br>Abierto hasta las 22:59</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">💳</div>
+                    <div class="contact-details">
+                        <h4>Formas de Pago</h4>
+                        <p>American Express<br>Mastercard, Visa</p>
+                    </div>
+                </div>
+            </div>
+            <div class="map-container fade-in">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3052.766323456789!2d-3.5000!3d39.9500!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4229f5e5e5e5e5d%3A0xabcdef1234567890!2sC.%20Pilarejo%2C%208%2C%2045300%20Oca%C3%B1a%2C%20Toledo!5e0!3m2!1ses!2ses!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">Entre Chamos y Tíos</div>
+        <div class="footer-links">
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">Google Maps</a>
+        </div>
+        <p class="footer-copyright">© 2026 Entre Chamos y Tíos. Todos los derechos reservados. Fusión Venezolana-Española en Ocaña.</p>
+    </footer>
+
+    <script>
+        // Menu Data
+        const menuData = {
+            primeros: [
+                { name: "Alcachofas Salteadas con Jamón", price: "13,90€", desc: "Alcachofas tiernas salteadas con jamón ibérico", image: "/Alcachofas-con-jamon.avif" },
+                { name: "Ensalada de Tomate y Caballa", price: "10,90€", desc: "Fresca ensalada con productos de temporada", image: "/EnsaladaDeTomateI.avif" },
+                { name: "Berenjenas Rellenas Gratinadas", price: "11,90€", desc: "Berenjenas rellenas gratinadas con queso", image: "/Berenjenas.webp" },
+                { name: "Pimientos de Piquillo Rellenos", price: "14,90€", desc: "Pimientos rellenos de queso y jamón", image: "/plato1.webp" },
+                { name: "Entrecot a la Parrilla", price: "18,90€", desc: "Corte premium cocinado a la parrilla", image: "/plato2.jpg" },
+                { name: "Carnes a la Brasa", price: "19,90€", desc: "Surtido selecto de carnes asadas", image: "/plato3.webp" }
+            ],
+            segundos: [
+                { name: "Biftec de Ternera", price: "18,90€", desc: "Carnes de calidad a la parrilla", image: "/Biftec.webp" },
+                { name: "Codillo Asado", price: "17,90€", desc: "Codillo asado lentamente", image: "/codillo.webp" },
+                { name: "Presa de Cerdo", price: "16,90€", desc: "Presa a la plancha con sal marina", image: "/PresaCerdo.webp" },
+                { name: "Emperador a la Plancha", price: "19,90€", desc: "Pescado fresco con aceite de oliva", image: "/Emperador.webp" },
+                { name: "Bacalao Rebozado", price: "17,90€", desc: "Bacalao con pimientos asados", image: "/Bacalao.jpg" },
+                { name: "Atún Encebollado", price: "18,90€", desc: "Atún fresco con cebolla", image: "/Atun.webp" }
+            ],
+            postres: [
+                { name: "Natillas Caseras", price: "4,50€", desc: "Natillas cremosas tradicionales", image: "/natillas.jpg" },
+                { name: "Puding de Limón", price: "4,50€", desc: "Puding casero con limón", image: "/pudin_de_limon.webp" },
+                { name: "Fruta del Día", price: "3,50€", desc: "Frutas frescas de temporada", image: "/Las_frutas_del_dia.webp" }
+            ]
+        };
+
+        // Render Menu
+        function renderMenu(category) {
+            const grid = document.getElementById('menuGrid');
+            grid.innerHTML = '';
+            
+            menuData[category].forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'menu-card';
+                card.style.transitionDelay = `${index * 100}ms`;
+                card.innerHTML = `
+                    <div class="menu-image">
+                        <img src="${item.image}" alt="${item.name}" loading="lazy">
+                    </div>
+                    <div class="menu-content">
+                        <h3 class="menu-name">${item.name}</h3>
+                        <p class="menu-desc">${item.desc}</p>
+                        <div class="menu-price">${item.price}</div>
+                    </div>
+                `;
+                grid.appendChild(card);
+                
+                setTimeout(() => card.classList.add('visible'), 100);
+            });
+        }
+
+        // Menu Tabs
+        document.querySelectorAll('.menu-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                renderMenu(tab.dataset.category);
+            });
+        });
+
+        // Initial Menu
+        renderMenu('primeros');
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Navbar Scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

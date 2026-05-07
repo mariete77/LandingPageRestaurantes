@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Entre Chamos y Tíos - Fusión Venezolana-Española</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --bg-cream: #FAF8F5;
+            --bg-white: #FFFFFF;
+            --ink: #1A1A1A;
+            --ink-muted: #6B6B6B;
+            --accent: #D4503A;
+            --accent-light: #FF6B52;
+            --border: #E8E4DF;
+            --card-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-cream: #121212;
+                --bg-white: #1A1A1A;
+                --ink: #F5F5F5;
+                --ink-muted: #A0A0A0;
+                --border: #2A2A2A;
+                --card-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-cream);
+            color: var(--ink);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            padding-bottom: calc(70px + var(--safe-bottom));
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Instrument Serif', serif;
+            font-weight: 400;
+        }
+
+        /* 1. NAVBAR - Sticky con blur */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 1.25rem;
+            background: rgba(250, 248, 245, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-content {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.25rem;
+            color: var(--ink);
+            text-decoration: none;
+        }
+
+        .nav-btn {
+            width: 44px;
+            height: 44px;
+            border: none;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .nav-btn:active {
+            transform: scale(0.9);
+        }
+
+        /* 2. HERO - Parallax suave */
+        .hero {
+            min-height: 85vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.25rem;
+            padding-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: -10%;
+            background-image: url('/EntreChamosYTiosHero.png');
+            background-size: cover;
+            background-position: center;
+            will-change: transform;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(0,0,0,0.8) 0%,
+                rgba(0,0,0,0.4) 50%,
+                rgba(0,0,0,0.2) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+
+        .hero-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-light);
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.6s ease forwards;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 12vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.6s ease 0.1s forwards;
+        }
+
+        .hero-desc {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 1.5rem;
+            max-width: 340px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.6s ease 0.2s forwards;
+        }
+
+        /* 3. BOTONES - Feedback táctil */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem 1.75rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 100px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 4px 12px rgba(212, 80, 58, 0.3);
+        }
+
+        .btn-primary:active {
+            box-shadow: 0 2px 6px rgba(212, 80, 58, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 0.75rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.6s ease 0.3s forwards;
+        }
+
+        /* 4. SWIPE HINT - Gesture navigation */
+        .swipe-hint {
+            position: absolute;
+            bottom: 1.25rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.7rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .swipe-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(5px); }
+        }
+
+        /* 5. SECCIONES - Scroll reveal */
+        .section {
+            padding: 3rem 1.25rem;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--ink-muted);
+            font-size: 0.95rem;
+        }
+
+        /* 6. TABS - Liquid tabs */
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding-bottom: 0.5rem;
+        }
+
+        .tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab {
+            flex-shrink: 0;
+            padding: 0.75rem 1.25rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .tab:active {
+            transform: scale(0.95);
+        }
+
+        .tab.active {
+            background: var(--ink);
+            color: var(--bg-cream);
+            border-color: var(--ink);
+        }
+
+        /* 7. MENU CARDS - Skeleton + reveal */
+        .menu-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .menu-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .menu-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .menu-card:active {
+            transform: scale(0.98);
+        }
+
+        .menu-image {
+            position: relative;
+            height: 180px;
+            background: var(--border);
+            overflow: hidden;
+        }
+
+        .menu-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .menu-card:active .menu-image img {
+            transform: scale(1.05);
+        }
+
+        .menu-content {
+            padding: 1rem;
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-name {
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .menu-price {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent);
+            white-space: nowrap;
+        }
+
+        .menu-desc {
+            font-size: 0.85rem;
+            color: var(--ink-muted);
+        }
+
+        /* 8. ABOUT - Accordion style */
+        .about-card {
+            background: var(--bg-white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .about-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .about-card p {
+            font-size: 0.9rem;
+            color: var(--ink-muted);
+            line-height: 1.7;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 1rem;
+            background: var(--bg-cream);
+            border-radius: 12px;
+        }
+
+        .stat-value {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.75rem;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--ink-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.25rem;
+        }
+
+        /* 9. CONTACT - Floating card */
+        .contact-card {
+            background: var(--bg-white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--accent);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .contact-text h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-text p {
+            font-size: 0.85rem;
+            color: var(--ink-muted);
+        }
+
+        .contact-text a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* 10. MAP */
+        .map-container {
+            border-radius: 16px;
+            overflow: hidden;
+            height: 200px;
+            margin-top: 1.5rem;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* 11. BOTTOM NAV - Liquid navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-white);
+            border-top: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            padding-bottom: calc(0.5rem + var(--safe-bottom));
+            z-index: 100;
+        }
+
+        .bottom-nav-inner {
+            max-width: 400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            background: var(--bg-cream);
+            border-radius: 100px;
+            padding: 0.5rem;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            text-decoration: none;
+            color: var(--ink-muted);
+            font-size: 0.7rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .nav-item.active {
+            background: var(--ink);
+            color: var(--bg-cream);
+        }
+
+        .nav-item:active {
+            transform: scale(0.9);
+        }
+
+        .nav-icon {
+            font-size: 1.25rem;
+        }
+
+        /* 12. FOOTER */
+        footer {
+            text-align: center;
+            padding: 2rem 1.25rem;
+            padding-bottom: calc(6rem + var(--safe-bottom));
+            color: var(--ink-muted);
+            font-size: 0.8rem;
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Skeleton loading */
+        .skeleton {
+            background: linear-gradient(
+                90deg,
+                var(--border) 0%,
+                var(--bg-cream) 50%,
+                var(--border) 100%
+            );
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Desktop adjustments */
+        @media (min-width: 768px) {
+            body {
+                padding-bottom: 0;
+            }
+
+            .section {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .hero {
+                min-height: 100vh;
+            }
+
+            .bottom-nav {
+                display: none;
+            }
+
+            .navbar {
+                display: none;
+            }
+
+            footer {
+                padding-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="#" class="logo">Entre Chamos y Tíos</a>
+            <button class="nav-btn" aria-label="Menú">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg" id="heroBg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-label">Fusión Venezolana-Española</p>
+            <h1 class="hero-title">Entre Chamos y Tíos</h1>
+            <p class="hero-desc">Sabores que conectan dos culturas en el corazón de Ocaña.</p>
+            <div class="hero-actions">
+                <a href="#menu" class="btn btn-primary">Ver Menú</a>
+                <a href="#contact" class="btn btn-secondary">Contacto</a>
+            </div>
+        </div>
+        <div class="swipe-hint">
+            <span>Desliza</span>
+            <svg class="swipe-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="section" id="menu">
+        <div class="section-header">
+            <h2 class="section-title">Nuestro Menú</h2>
+            <p class="section-subtitle">Cocina casera con alma venezolana y española</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" data-category="primeros">Primeros</button>
+            <button class="tab" data-category="segundos">Segundos</button>
+            <button class="tab" data-category="postres">Postres</button>
+        </div>
+
+        <div class="menu-grid" id="menuGrid"></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+        <div class="section-header">
+            <h2 class="section-title">Nuestra Historia</h2>
+            <p class="section-subtitle">Dos culturas, un mismo sabor</p>
+        </div>
+
+        <div class="about-card">
+            <h3>Punto de Encuentro</h3>
+            <p>En la Calle Pilarejo, 8 de Ocaña, nació un lugar donde venezolanos y españoles se sienten como en casa. Nuestra carta celebra lo mejor de ambas cocinas.</p>
+        </div>
+
+        <div class="about-card">
+            <h3>Compromiso y Calidad</h3>
+            <p>Desde desayunos venezolanos hasta cenas con los mejores cortes, cada plato refleja nuestra pasión por la buena comida y el servicio cercano.</p>
+        </div>
+
+        <div class="stats-row">
+            <div class="stat">
+                <div class="stat-value">+500</div>
+                <div class="stat-label">Semanal</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">15+</div>
+                <div class="stat-label">Platos</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">4.3★</div>
+                <div class="stat-label">Google</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+        <div class="section-header">
+            <h2 class="section-title">Encuéntranos</h2>
+            <p class="section-subtitle">Te esperamos en Ocaña</p>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <div class="contact-text">
+                    <h4>Dirección</h4>
+                    <p>C. Pilarejo, 8<br>45300 Ocaña, Toledo</p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">📞</div>
+                <div class="contact-text">
+                    <h4>Teléfono</h4>
+                    <p><a href="tel:+34643618941">+34 643 61 89 41</a></p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">🕐</div>
+                <div class="contact-text">
+                    <h4>Horario</h4>
+                    <p>Abierto hasta las 22:59</p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">💳</div>
+                <div class="contact-text">
+                    <h4>Pagos</h4>
+                    <p>Visa, Mastercard, Amex</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3052.766323456789!2d-3.5000!3d39.9500!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4229f5e5e5e5e5d%3A0xabcdef1234567890!2sC.%20Pilarejo%2C%208%2C%2045300%20Oca%C3%B1a%2C%20Toledo!5e0!3m2!1ses!2ses!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Entre Chamos y Tíos</p>
+        <p>Fusión Venezolana-Española en Ocaña</p>
+    </footer>
+
+    <!-- BOTTOM NAV -->
+    <nav class="bottom-nav">
+        <div class="bottom-nav-inner">
+            <a href="#menu" class="nav-item active">
+                <span class="nav-icon">🍽️</span>
+                <span>Menú</span>
+            </a>
+            <a href="#about" class="nav-item">
+                <span class="nav-icon">🏠</span>
+                <span>Nosotros</span>
+            </a>
+            <a href="#contact" class="nav-item">
+                <span class="nav-icon">📞</span>
+                <span>Contacto</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // Menu Data
+        const menuData = {
+            primeros: [
+                { name: "Alcachofas Salteadas con Jamón", price: "13,90€", desc: "Alcachofas tiernas con jamón ibérico", image: "/Alcachofas-con-jamon.avif" },
+                { name: "Ensalada de Tomate y Caballa", price: "10,90€", desc: "Productos de temporada frescos", image: "/EnsaladaDeTomateI.avif" },
+                { name: "Berenjenas Rellenas", price: "11,90€", desc: "Gratinadas con queso fundido", image: "/Berenjenas.webp" },
+                { name: "Pimientos de Piquillo", price: "14,90€", desc: "Rellenos de queso y jamón", image: "/plato1.webp" },
+                { name: "Entrecot a la Parrilla", price: "18,90€", desc: "Corte premium a la brasa", image: "/plato2.jpg" },
+                { name: "Carnes a la Brasa", price: "19,90€", desc: "Surtido selecto de carnes", image: "/plato3.webp" }
+            ],
+            segundos: [
+                { name: "Biftec de Ternera", price: "18,90€", desc: "A la parrilla, punto selectable", image: "/Biftec.webp" },
+                { name: "Codillo Asado", price: "17,90€", desc: "Asado lentamente", image: "/codillo.webp" },
+                { name: "Presa de Cerdo", price: "16,90€", desc: "A la plancha con sal marina", image: "/PresaCerdo.webp" },
+                { name: "Emperador a la Plancha", price: "19,90€", desc: "Pescado fresco del día", image: "/Emperador.webp" },
+                { name: "Bacalao Rebozado", price: "17,90€", desc: "Con pimientos asados", image: "/Bacalao.jpg" },
+                { name: "Atún Encebollado", price: "18,90€", desc: "Con vinagre de jerez", image: "/Atun.webp" }
+            ],
+            postres: [
+                { name: "Natillas Caseras", price: "4,50€", desc: "Receta tradicional", image: "/natillas.jpg" },
+                { name: "Puding de Limón", price: "4,50€", desc: "Casero y fresquito", image: "/pudin_de_limon.webp" },
+                { name: "Fruta del Día", price: "3,50€", desc: "De temporada", image: "/Las_frutas_del_dia.webp" }
+            ]
+        };
+
+        // Render Menu
+        function renderMenu(category) {
+            const grid = document.getElementById('menuGrid');
+            grid.innerHTML = '';
+            
+            menuData[category].forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'menu-card';
+                card.style.transitionDelay = `${index * 50}ms`;
+                card.innerHTML = `
+                    <div class="menu-image">
+                        <img src="${item.image}" alt="${item.name}" loading="lazy">
+                    </div>
+                    <div class="menu-content">
+                        <div class="menu-header">
+                            <h3 class="menu-name">${item.name}</h3>
+                            <span class="menu-price">${item.price}</span>
+                        </div>
+                        <p class="menu-desc">${item.desc}</p>
+                    </div>
+                `;
+                grid.appendChild(card);
+                
+                // Trigger animation
+                requestAnimationFrame(() => {
+                    setTimeout(() => card.classList.add('visible'), 50);
+                });
+            });
+        }
+
+        // Tab switching with liquid effect
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                renderMenu(tab.dataset.category);
+            });
+            
+            // Touch feedback
+            tab.addEventListener('touchstart', () => {
+                tab.style.transform = 'scale(0.95)';
+            });
+            tab.addEventListener('touchend', () => {
+                tab.style.transform = '';
+            });
+        });
+
+        // Initial menu
+        renderMenu('primeros');
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(el => observer.observe(el));
+
+        // Parallax hero (subtle)
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+                    const heroBg = document.getElementById('heroBg');
+                    if (heroBg && scrolled < window.innerHeight) {
+                        heroBg.style.transform = `translateY(${scrolled * 0.3}px)`;
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // Bottom nav active state
+        const navItems = document.querySelectorAll('.nav-item');
+        const sections = document.querySelectorAll('.section');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
