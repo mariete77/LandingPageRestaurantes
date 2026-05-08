@@ -7,16 +7,29 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        display: ["Almendra", "serif"],
-        body: ["Plus Jakarta Sans", "sans-serif"],
+        display: ["Bebas Neue", "sans-serif"],
+        serif: ["Playfair Display", "serif"],
+        body: ["Inter", "sans-serif"],
       },
       colors: {
-        "cream-base": "#D8CBB8",
-        "warm-accent": "#D49653",
-        "charcoal-dark": "#2C2C2C",
-        "deep-charcoal": "#222222",
-        "light-divider": "#DDDDDD",
-        "surface-white": "#FFFFFF",
+        // Industrial Chic Palette
+        "ink-black": "#0F0F0F",
+        "charcoal": "#1A1A1A",
+        "graphite": "#2D2D2D",
+        "copper": "#B87333",
+        "copper-light": "#D4A574",
+        "bone": "#F5F5DC",
+        "stone": "#E8E6E1",
+        "fire": "#C73E1D",
+        "fire-light": "#E85D3F",
+        "ash": "#8A8A8A",
+        // Legacy aliases for compatibility
+        "cream-base": "#0F0F0F",
+        "warm-accent": "#B87333",
+        "charcoal-dark": "#F5F5DC",
+        "deep-charcoal": "#1A1A1A",
+        "light-divider": "#2D2D2D",
+        "surface-white": "#1A1A1A",
       },
     },
   },
