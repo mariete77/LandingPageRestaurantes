@@ -7,28 +7,29 @@ import * as Dialog from "@radix-ui/react-dialog";
 import * as Tabs from "@radix-ui/react-tabs";
 import * as Toast from "@radix-ui/react-toast";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import * as Tooltip from "@radix-ui/react-tooltip";
 
 const menuItems = {
   Primeros: [
-    { name: "Alcachofas Salteadas con Jamón", price: "13,90€", description: "Alcachofas tiernas salteadas al momento con jamón ibérico en su punto.", image: "/Alcachofas-con-jamon.avif" },
-    { name: "Ensalada de Tomate, Mezclum, Caballa", price: "10,90€", description: "Fresca ensalada con productos de temporada y caballa marinada.", image: "/EnsaladaDeTomateI.avif" },
-    { name: "Berenjenas Rellenas Gratinadas", price: "11,90€", description: "Berenjenas rellenas de carne y gratinadas en el horno con queso fundido.", image: "/Berenjenas.webp" },
-    { name: "Pimientos de Piquillo Rellenos", price: "14,90€", description: "Delicados pimientos de piquillo rellenos de queso fresco y jamón ibérico.", image: "/plato1.webp" },
-    { name: "Entrecot a la Parrilla", price: "18,90€", description: "Corte premium de carne jugoso y tierno, cocinado a la parrilla con sal marina.", image: "/plato2.jpg" },
-    { name: "Carnes a la Brasa", price: "19,90€", description: "Surtido selecto de carnes frescas asadas lentamente a la brasa.", image: "/plato3.webp" },
+    { name: "Alcachofas Salteadas con Jamón", price: "13,90€", description: "Alcachofas tiernas salteadas al momento con jamón ibérico en su punto.", image: "/Alcachofas-con-jamon.avif", tags: ["gf"] },
+    { name: "Ensalada de Tomate, Mezclum, Caballa", price: "10,90€", description: "Fresca ensalada con productos de temporada y caballa marinada.", image: "/EnsaladaDeTomateI.avif", tags: ["gf", "df"] },
+    { name: "Berenjenas Rellenas Gratinadas", price: "11,90€", description: "Berenjenas rellenas de carne y gratinadas en el horno con queso fundido.", image: "/Berenjenas.webp", tags: ["v"] },
+    { name: "Pimientos de Piquillo Rellenos", price: "14,90€", description: "Delicados pimientos de piquillo rellenos de queso fresco y jamón ibérico.", image: "/plato1.webp", tags: ["gf"] },
+    { name: "Entrecot a la Parrilla", price: "18,90€", description: "Corte premium de carne jugoso y tierno, cocinado a la parrilla con sal marina.", image: "/plato2.jpg", tags: ["gf", "keto"] },
+    { name: "Carnes a la Brasa", price: "19,90€", description: "Surtido selecto de carnes frescas asadas lentamente a la brasa.", image: "/plato3.webp", tags: ["gf", "keto", "spicy"] },
   ],
   Segundos: [
-    { name: "Biftec de Ternera", price: "18,90€", description: "Carnes de calidad, cocinadas a la parrilla con el punto que prefieras.", image: "/Biftec.webp" },
-    { name: "Codillo Asado a Baja Temperatura", price: "17,90€", description: "Codillo de cerdo asado lentamente hasta quedar tierno y jugoso.", image: "/codillo.webp" },
-    { name: "Presa de Cerdo a la Plancha", price: "16,90€", description: "Presa de cerdo seleccionada, hecha a la plancha con un punto de sal marina.", image: "/PresaCerdo.webp" },
-    { name: "Emperador a la Plancha", price: "19,90€", description: "Pescado fresco del día preparado a la plancha con aceite de oliva virgen.", image: "/Emperador.webp" },
-    { name: "Bacalao Rebozado", price: "17,90€", description: "Bacalao fresco rebozado y acompañado de pimientos asados caseros.", image: "/Bacalao.jpg" },
-    { name: "Atún Encebollado", price: "18,90€", description: "Atún fresco preparado con cebolla y un toque de vinagre de jerez.", image: "/Atun.webp" },
+    { name: "Biftec de Ternera", price: "18,90€", description: "Carnes de calidad, cocinadas a la parrilla con el punto que prefieras.", image: "/Biftec.webp", tags: ["gf", "keto"] },
+    { name: "Codillo Asado a Baja Temperatura", price: "17,90€", description: "Codillo de cerdo asado lentamente hasta quedar tierno y jugoso.", image: "/codillo.webp", tags: ["gf", "keto"] },
+    { name: "Presa de Cerdo a la Plancha", price: "16,90€", description: "Presa de cerdo seleccionada, hecha a la plancha con un punto de sal marina.", image: "/PresaCerdo.webp", tags: ["gf", "keto", "spicy"] },
+    { name: "Emperador a la Plancha", price: "19,90€", description: "Pescado fresco del día preparado a la plancha con aceite de oliva virgen.", image: "/Emperador.webp", tags: ["gf", "df", "keto"] },
+    { name: "Bacalao Rebozado", price: "17,90€", description: "Bacalao fresco rebozado y acompañado de pimientos asados caseros.", image: "/Bacalao.jpg", tags: ["v"] },
+    { name: "Atún Encebollado", price: "18,90€", description: "Atún fresco preparado con cebolla y un toque de vinagre de jerez.", image: "/Atun.webp", tags: ["gf", "df", "keto"] },
   ],
   Postres: [
-    { name: "Natillas Caseras", price: "4,50€", description: "Natillas cremosas preparadas de manera tradicional.", image: "/natillas.jpg" },
-    { name: "Puding de Limón", price: "4,50€", description: "Puding casero con un toque fresco de limón.", image: "/pudin_de_limon.webp" },
-    { name: "Fruta del Día", price: "3,50€", description: "Selección de frutas frescas de temporada.", image: "/Las_frutas_del_dia.webp" },
+    { name: "Natillas Caseras", price: "4,50€", description: "Natillas cremosas preparadas de manera tradicional.", image: "/natillas.jpg", tags: ["v", "gf"] },
+    { name: "Puding de Limón", price: "4,50€", description: "Puding casero con un toque fresco de limón.", image: "/pudin_de_limon.webp", tags: ["v", "gf"] },
+    { name: "Fruta del Día", price: "3,50€", description: "Selección de frutas frescas de temporada.", image: "/Las_frutas_del_dia.webp", tags: ["vegan", "gf", "df", "v"] },
   ],
 };
 
@@ -39,6 +40,54 @@ const fadeInUp = { hidden: { opacity: 0, y: 60 }, visible: { opacity: 1, y: 0 } 
 const staggerContainer = { hidden: { opacity: 0 }, visible: { opacity: 1 } };
 const scaleIn = { hidden: { opacity: 0, scale: 0.8 }, visible: { opacity: 1, scale: 1 } };
 const slideInRight = { hidden: { opacity: 0, x: 60 }, visible: { opacity: 1, x: 0 } };
+
+// Tag definitions
+const tagConfig: Record<string, { icon: string; label: string; color: string; bg: string }> = {
+  vegan: { icon: "🌱", label: "Vegano", color: "text-green-700", bg: "bg-green-100" },
+  v: { icon: "🥬", label: "Vegetariano", color: "text-lime-700", bg: "bg-lime-100" },
+  gf: { icon: "🥞", label: "Sin gluten", color: "text-amber-700", bg: "bg-amber-100" },
+  df: { icon: "🥛", label: "Sin lácteos", color: "text-blue-700", bg: "bg-blue-100" },
+  keto: { icon: "🥑", label: "Keto", color: "text-purple-700", bg: "bg-purple-100" },
+  spicy: { icon: "🌶️", label: "Picante", color: "text-red-700", bg: "bg-red-100" },
+};
+
+// Dietary Badges Component
+function DietaryBadges({ tags, className = "" }: { tags?: string[]; className?: string }) {
+  if (!tags || tags.length === 0) return null;
+  return (
+    <Tooltip.Provider delayDuration={200}>
+      <div className={`flex flex-wrap gap-1 ${className}`}>
+        {tags.map((tag) => {
+          const config = tagConfig[tag];
+          if (!config) return null;
+          return (
+            <Tooltip.Root key={tag}>
+              <Tooltip.Trigger asChild>
+                <motion.span
+                  whileHover={{ scale: 1.15, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`inline-flex items-center justify-center w-7 h-7 rounded-full ${config.bg} ${config.color} text-sm shadow-sm backdrop-blur-sm border border-white/20 cursor-help`}
+                >
+                  {config.icon}
+                </motion.span>
+              </Tooltip.Trigger>
+              <Tooltip.Portal>
+                <Tooltip.Content
+                  side="top"
+                  sideOffset={5}
+                  className="z-50 px-3 py-1.5 bg-charcoal-dark text-cream-base text-xs font-body rounded-lg shadow-xl"
+                >
+                  {config.label}
+                  <Tooltip.Arrow className="fill-charcoal-dark" />
+                </Tooltip.Content>
+              </Tooltip.Portal>
+            </Tooltip.Root>
+          );
+        })}
+      </div>
+    </Tooltip.Provider>
+  );
+}
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -230,6 +279,10 @@ export default function Home() {
                               <Image src={item.image} alt={item.name} fill className="object-cover" />
                             </motion.div>
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            {/* Dietary Badges */}
+                            <div className="absolute top-3 left-3">
+                              <DietaryBadges tags={item.tags} />
+                            </div>
                           </div>
                           <div className="p-4 md:p-6">
                             <div className="flex justify-between items-start mb-3 md:mb-4">
@@ -280,7 +333,10 @@ export default function Home() {
                     </div>
                     <div className="p-6 md:p-8">
                       <Dialog.Title className="font-display text-2xl md:text-3xl text-charcoal-dark mb-2">{selectedItem.name}</Dialog.Title>
-                      <Dialog.Description className="font-body text-2xl text-warm-accent font-bold mb-4">{selectedItem.price}</Dialog.Description>
+                      <div className="flex items-center gap-3 mb-3">
+                        <Dialog.Description className="font-body text-2xl text-warm-accent font-bold">{selectedItem.price}</Dialog.Description>
+                        <DietaryBadges tags={selectedItem.tags} />
+                      </div>
                       <p className="font-body text-sm md:text-base text-charcoal-dark/70 mb-6">{selectedItem.description}</p>
                       <motion.button
                         whileHover={{ scale: 1.02, boxShadow: "0 10px 30px rgba(201, 169, 110, 0.3)" }} whileTap={{ scale: 0.98 }}
