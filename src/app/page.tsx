@@ -97,6 +97,7 @@ export default function Home() {
   const { scrollY } = useScroll();
   const heroOpacity = useTransform(scrollY, [0, 400], [1, 0]);
   const parallaxY = useTransform(scrollY, [0, 500], [0, 150]);
+  const headerBg = useTransform(scrollY, [0, 100], ["rgba(250, 248, 245, 0.6)", "rgba(250, 248, 245, 0.85)"]);
 
   const showToast = (message: string) => {
     setToastMessage(message);
@@ -114,7 +115,8 @@ export default function Home() {
         {/* Header with Radix Dropdown */}
         <motion.header 
           initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.6 }}
-          className="sticky top-0 z-50 bg-cream-base/80 backdrop-blur-lg border-b border-light-divider"
+          style={{ backgroundColor: headerBg }}
+          className="sticky top-0 z-50 backdrop-blur-xl border-b border-warm-accent/20 shadow-lg shadow-black/5"
         >
           <div className="max-w-7xl mx-auto px-4 md:px-6 py-4">
             <nav className="flex items-center justify-between">
